@@ -67,8 +67,7 @@ class _IndexPageState extends State<IndexPage> {
       _chanellController.text.isEmpty ? _validateError = true : _validateError = false;
     });
     if(_chanellController.text.isNotEmpty){
-      await _handleCameraAndMicPermission(Permission.camera);
-      await _handleCameraAndMicPermission(Permission.microphone);
+      await _handleMicPermission(Permission.microphone);
       await Navigator.push(
         context,
         MaterialPageRoute(
@@ -81,7 +80,7 @@ class _IndexPageState extends State<IndexPage> {
     }
   }
 
-  Future<void> _handleCameraAndMicPermission(Permission permission) async{
+  Future<void> _handleMicPermission(Permission permission) async{
     final status = await permission.request();
     log(status.toString());
   }
